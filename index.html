@@ -212,7 +212,7 @@
 
   .btn-outline:hover { background: var(--navy); color: var(--white); }
 
-  /* ── HERO RIGHT ── */
+  /* ── HERO RIGHT: LIVING IMAGE STACK ── */
   .hero-right {
     display: flex;
     justify-content: center;
@@ -222,131 +222,109 @@
     padding-top: 2rem;
   }
 
-  .hero-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 3rem 2.5rem;
-    text-align: center;
-    box-shadow: 0 30px 80px rgba(11,31,58,0.09), 0 0 0 6px rgba(200,164,90,0.06);
+  .hero-visual {
     position: relative;
-    max-width: 320px;
     width: 100%;
-    margin-top: 2rem;
+    max-width: 480px;
+    aspect-ratio: 4/5;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(11,31,58,0.12), 0 0 0 6px rgba(200,164,90,0.06);
   }
 
-  .hero-card::before {
+  .hero-visual::before {
     content: '';
     position: absolute;
-    top: -1px; left: 50%;
-    transform: translateX(-50%);
-    width: 60px; height: 3px;
+    top: 0; left: 0; right: 0;
+    height: 3px;
     background: linear-gradient(90deg, var(--gold), var(--teal));
-    border-radius: 2px;
+    z-index: 3;
   }
 
-  .hero-card-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    justify-content: center;
-    margin-bottom: 1.4rem;
-    padding-bottom: 1.2rem;
-    border-bottom: 1px solid var(--border);
+  .hero-image-stack {
+    position: relative;
+    width: 100%;
+    height: 100%;
   }
 
-  .hero-card-brand {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--navy);
-    letter-spacing: -0.02em;
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+    transform: scale(1);
   }
 
-  .hero-card-brand span { color: var(--teal); font-weight: 300; }
+  .hero-img.active {
+    opacity: 1;
+    z-index: 2;
+    animation: kenBurns 6s ease-out forwards;
+  }
 
-  .avatar-wrap {
-    width: 110px; height: 110px;
-    margin: 0 auto 1.2rem;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--teal) 0%, var(--navy) 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.8rem;
-    font-weight: 600;
+  @keyframes kenBurns {
+    0% { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.08) translate(-1%, -1%); }
+  }
+
+  .hero-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2.5rem 1.8rem 1.8rem;
+    background: linear-gradient(to top, rgba(11,31,58,0.85) 0%, transparent 100%);
     color: var(--white);
-    letter-spacing: -0.02em;
-    box-shadow: 0 8px 24px rgba(14,124,123,0.3);
-  }
-
-  .card-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--navy);
+    font-size: 1.3rem;
+    font-weight: 400;
+    font-style: italic;
+    z-index: 3;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
   }
 
-  .card-title {
-    font-size: 0.78rem;
+  .hero-caption.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hero-caption small {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.68rem;
     font-weight: 500;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--teal);
-    margin-top: 0.3rem;
-    margin-bottom: 1.4rem;
+    color: var(--gold);
+    font-style: normal;
+    margin-bottom: 0.3rem;
   }
 
-  .card-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    border-top: 1px solid var(--border);
-    padding-top: 1.4rem;
-  }
-
-  .stat { text-align: center; }
-
-  .stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: var(--navy);
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 0.2rem;
-  }
-
-  .availability-dot {
-    display: inline-flex;
-    align-items: center;
+  .hero-progress {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
     gap: 0.4rem;
-    font-size: 0.72rem;
-    font-weight: 500;
-    color: #2ecc71;
-    letter-spacing: 0.06em;
-    margin-top: 1.2rem;
+    z-index: 4;
   }
 
-  .availability-dot::before {
-    content: '';
-    width: 7px; height: 7px;
+  .hero-dot {
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    background: #2ecc71;
-    box-shadow: 0 0 0 2px rgba(46,204,113,0.25);
-    animation: pulse 1.8s infinite;
+    background: rgba(255,255,255,0.3);
+    transition: background 0.4s ease;
   }
 
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 2px rgba(46,204,113,0.25); }
-    50% { box-shadow: 0 0 0 5px rgba(46,204,113,0.1); }
+  .hero-dot.active {
+    background: var(--gold);
+    box-shadow: 0 0 0 3px rgba(200,164,90,0.25);
   }
 
   /* ── SECTION BASE ── */
@@ -1473,10 +1451,17 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; padding-top: 6rem; text-align: center; }
+    .hero { grid-template-columns: 1fr; padding-top: 6rem; text-align: center; gap: 2rem; }
     .hero-desc { margin: 0 auto 2.8rem; }
     .hero-actions { justify-content: center; }
-    .hero-right { display: none; }
+    /* MOBILE FIX: hero-right now shows below text instead of hidden */
+    .hero-right { 
+      display: flex; 
+      padding-top: 0; 
+      max-width: 360px; 
+      margin: 0 auto; 
+    }
+    .hero-visual { aspect-ratio: 4/3; }
     .services-header { grid-template-columns: 1fr; gap: 2rem; }
     .services-grid { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr 1fr; }
@@ -1593,37 +1578,38 @@
       <a href="#services" class="btn-outline">View Services</a>
     </div>
   </div>
+
+  <!-- NEW: LIVING IMAGE STACK (replaces dead stats card) -->
   <div class="hero-right">
-    <div class="hero-card">
-      <div class="hero-card-logo">
-        <svg width="52" height="52" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="cardHex" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#0B1F3A"/>
-              <stop offset="100%" stop-color="#0E7C7B"/>
-            </linearGradient>
-          </defs>
-          <polygon points="70,4 127,37 127,103 70,136 13,103 13,37" fill="url(#cardHex)"/>
-          <rect x="61" y="42" width="18" height="56" rx="4" fill="#2ECC71"/>
-          <rect x="42" y="61" width="56" height="18" rx="4" fill="#2ECC71"/>
-          <circle cx="70" cy="70" r="7" fill="#0B1F3A"/>
-        </svg>
-        <div class="hero-card-brand">Dawa<span>Consult</span></div>
+    <div class="hero-visual">
+      <div class="hero-image-stack" id="heroStack">
+        <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800&q=80" 
+             alt="Organized medications on pharmacy counter" 
+             class="hero-img active" 
+             data-caption="Medication Review">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80" 
+             alt="Pharmacist reviewing prescription" 
+             class="hero-img" 
+             data-caption="Prescription Guidance">
+        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80" 
+             alt="Patient consultation call" 
+             class="hero-img" 
+             data-caption="Personal Consultation">
+        <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=800&q=80" 
+             alt="Healthy outcome wellness" 
+             class="hero-img" 
+             data-caption="Better Health">
       </div>
-      <div class="avatar-wrap">RM</div>
-      <div class="card-name">Dr. Ryan Mwirigi</div>
-      <div class="card-title">Consultant Pharmacist</div>
-      <div class="card-stats">
-        <div class="stat">
-          <div class="stat-num">8+</div>
-          <div class="stat-label">Months Clinical</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">KE</div>
-          <div class="stat-label">Nairobi, Kenya</div>
-        </div>
+      <div class="hero-caption" id="heroCaption">
+        <small>The Journey</small>
+        Medication Review
       </div>
-      <div class="availability-dot">Available for Consultation</div>
+      <div class="hero-progress" id="heroProgress">
+        <div class="hero-dot active"></div>
+        <div class="hero-dot"></div>
+        <div class="hero-dot"></div>
+        <div class="hero-dot"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -2069,6 +2055,41 @@
 <div class="toast" id="toast">✓ Message sent! Dr. Ryan will get back to you shortly.</div>
 
 <script>
+  // ── HERO IMAGE STACK ──
+  const heroImages = document.querySelectorAll('.hero-img');
+  const heroCaption = document.getElementById('heroCaption');
+  const heroDots = document.querySelectorAll('.hero-dot');
+  let currentHero = 0;
+  const heroInterval = 5000;
+
+  function updateHero(index) {
+    heroImages.forEach((img, i) => {
+      img.classList.toggle('active', i === index);
+    });
+    heroDots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+
+    const captionText = heroImages[index].getAttribute('data-caption');
+    heroCaption.classList.remove('visible');
+    setTimeout(() => {
+      heroCaption.innerHTML = `<small>The Journey</small>${captionText}`;
+      heroCaption.classList.add('visible');
+    }, 300);
+  }
+
+  function nextHero() {
+    currentHero = (currentHero + 1) % heroImages.length;
+    updateHero(currentHero);
+  }
+
+  // Initialize caption
+  heroCaption.classList.add('visible');
+
+  // Start auto-cycle
+  setInterval(nextHero, heroInterval);
+
+  // ── FEEDBACK FORM ──
   const otherCheckbox = document.getElementById('other-checkbox');
   const otherInputWrap = document.getElementById('other-input-wrap');
   otherCheckbox.addEventListener('change', function() {
@@ -2099,6 +2120,7 @@
     }
   });
 
+  // ── MOBILE MENU ──
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobile-menu');
   hamburger.addEventListener('click', () => {
@@ -2112,6 +2134,7 @@
     hamburger.setAttribute('aria-expanded', 'false');
   }
 
+  // ── SCROLL REVEAL ──
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
@@ -2123,6 +2146,7 @@
   }, { threshold: 0.12 });
   reveals.forEach(el => observer.observe(el));
 
+  // ── CONSULT FORM ──
   const form = document.getElementById('consult-form');
   const btn = document.getElementById('submit-btn');
   const toast = document.getElementById('toast');
