@@ -252,61 +252,6 @@
 
   .btn-outline:hover { background: var(--white); color: var(--navy); border-color: var(--white); }
 
-  /* Caption + progress at bottom of hero */
-  .hero-caption-bar {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 4;
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    background: rgba(11,31,58,0.5);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(200,164,90,0.2);
-    border-radius: 100px;
-    padding: 0.6rem 1.4rem;
-    animation: fadeUp 1s 0.5s ease both;
-  }
-
-  .hero-caption-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.95rem;
-    font-style: italic;
-    color: var(--white);
-    font-weight: 400;
-  }
-
-  .hero-caption-text small {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.6rem;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-style: normal;
-    margin-right: 0.5rem;
-  }
-
-  .hero-progress {
-    display: flex;
-    gap: 0.4rem;
-  }
-
-  .hero-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.3);
-    transition: background 0.4s ease, box-shadow 0.4s ease;
-  }
-
-  .hero-dot.active {
-    background: var(--gold);
-    box-shadow: 0 0 0 3px rgba(200,164,90,0.25);
-  }
-
   /* ── SECTION BASE ── */
   section { padding: 7rem 5vw; }
 
@@ -1461,8 +1406,6 @@
     .hero-desc { font-size: 0.9rem; max-width: 100%; }
     .hero-actions { flex-direction: column; align-items: stretch; gap: 0.8rem; }
     .btn-primary, .btn-outline { width: 100%; text-align: center; padding: 0.75rem 1rem; }
-    .hero-caption-bar { bottom: 1rem; padding: 0.5rem 1rem; }
-    .hero-caption-text { font-size: 0.85rem; }
     .services-section { padding: 4rem 5vw; }
     .services-grid { grid-template-columns: 1fr; gap: 1rem; }
     .service-card { padding: 1.8rem 1.5rem; }
@@ -1539,20 +1482,16 @@
 <section class="hero" id="home">
   <!-- Full-bleed background images (NO PEOPLE) -->
   <div class="hero-image-bg">
-    <img src="https://images.unsplash.com/photo-1584308666744-24b5c4747e11?w=1600&q=80" 
-         alt="Medications and pills organized on pharmacy counter" 
-         class="hero-bg-img active" 
-         data-caption="Medication Review">
     <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=1600&q=80" 
          alt="White prescription capsules on clean surface" 
-         class="hero-bg-img" 
+         class="hero-bg-img active" 
          data-caption="Prescription Guidance">
     <img src="https://images.unsplash.com/photo-1555633514-abcee6ab92e1?w=1600&q=80" 
          alt="Prescription bottle and medical paperwork" 
          class="hero-bg-img" 
          data-caption="Drug Interaction Check">
-    <img src="https://images.unsplash.com/photo-1583947581924-860bda6a26df?w=1600&q=80" 
-         alt="Pharmacy shelf with organized medicine bottles" 
+    <img src="images/pillplannerpro.jpeg" 
+         alt="Weekly pill organizer for managing chronic medications" 
          class="hero-bg-img" 
          data-caption="Chronic Disease Support">
     <!-- Dark overlay so text is readable -->
@@ -1571,19 +1510,6 @@
     <div class="hero-actions">
       <a href="#consult" class="btn-primary">Book a Consultation</a>
       <a href="#services" class="btn-outline">View Services</a>
-    </div>
-  </div>
-
-  <!-- Caption + progress dots at bottom -->
-  <div class="hero-caption-bar">
-    <div class="hero-caption-text" id="heroCaption">
-      <small>The Journey</small>Medication Review
-    </div>
-    <div class="hero-progress" id="heroProgress">
-      <div class="hero-dot active"></div>
-      <div class="hero-dot"></div>
-      <div class="hero-dot"></div>
-      <div class="hero-dot"></div>
     </div>
   </div>
 </section>
@@ -2030,30 +1956,16 @@
 <script>
   // ── HERO FULL-BLEED IMAGE STACK ──
   const heroImages = document.querySelectorAll('.hero-bg-img');
-  const heroCaption = document.getElementById('heroCaption');
-  const heroDots = document.querySelectorAll('.hero-dot');
   let currentHero = 0;
-  const heroInterval = 5000;
-
-  function updateHero(index) {
-    heroImages.forEach((img, i) => {
-      img.classList.toggle('active', i === index);
-    });
-    heroDots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === index);
-    });
-
-    const captionText = heroImages[index].getAttribute('data-caption');
-    heroCaption.innerHTML = `<small>The Journey</small>${captionText}`;
-  }
 
   function nextHero() {
     currentHero = (currentHero + 1) % heroImages.length;
-    updateHero(currentHero);
+    heroImages.forEach((img, i) => {
+      img.classList.toggle('active', i === currentHero);
+    });
   }
 
-  // Start auto-cycle
-  setInterval(nextHero, heroInterval);
+  setInterval(nextHero, 5000);
 
   // ── FEEDBACK FORM ──
   const otherCheckbox = document.getElementById('other-checkbox');
