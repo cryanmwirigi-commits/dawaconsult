@@ -53,24 +53,37 @@
     align-items: center;
     justify-content: space-between;
     padding: 1.4rem 5vw;
+    background: transparent;
+    backdrop-filter: none;
+    border-bottom: 1px solid transparent;
+    transition: background 0.3s cubic-bezier(0.4,0,0.2,1), backdrop-filter 0.3s, border-color 0.3s, padding 0.3s;
+  }
+
+  nav.scrolled {
     background: rgba(253,252,250,0.88);
     backdrop-filter: blur(18px);
-    border-bottom: 1px solid var(--border);
-    transition: padding 0.3s;
+    border-bottom-color: var(--border);
   }
 
   .nav-logo {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.7rem;
     font-weight: 700;
-    color: var(--navy);
+    color: var(--white);
     letter-spacing: -0.02em;
     display: flex;
     align-items: center;
     gap: 0.6rem;
+    transition: color 0.3s cubic-bezier(0.4,0,0.2,1);
   }
 
-  .nav-logo span { color: var(--teal); }
+  .nav-logo span { 
+    color: rgba(255,255,255,0.85); 
+    transition: color 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  nav.scrolled .nav-logo { color: var(--navy); }
+  nav.scrolled .nav-logo span { color: var(--teal); }
 
   .nav-links {
     display: flex;
@@ -83,12 +96,15 @@
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: rgba(255,255,255,0.85);
     text-decoration: none;
-    transition: color 0.2s;
+    transition: color 0.3s cubic-bezier(0.4,0,0.2,1);
   }
 
-  .nav-links a:hover { color: var(--teal); }
+  .nav-links a:hover { color: var(--white); }
+
+  nav.scrolled .nav-links a { color: var(--muted); }
+  nav.scrolled .nav-links a:hover { color: var(--teal); }
 
   .nav-cta {
     background: var(--teal);
@@ -852,10 +868,12 @@
     display: block;
     width: 24px;
     height: 2px;
-    background: var(--navy);
+    background: var(--white);
     border-radius: 2px;
     transition: all 0.3s;
   }
+
+  nav.scrolled .hamburger span { background: var(--navy); }
 
   .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .hamburger.open span:nth-child(2) { opacity: 0; }
@@ -1966,6 +1984,21 @@
   }
 
   setInterval(nextHero, 5000);
+
+  // ── NAV: TRANSPARENT ON HERO, SOLID WHEN SCROLLED ──
+  const nav = document.querySelector('nav');
+  const scrollThreshold = window.innerHeight * 0.8;
+
+  function updateNav() {
+    if (window.scrollY > scrollThreshold) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav(); // run once on load in case user reloads mid-page
 
   // ── FEEDBACK FORM ──
   const otherCheckbox = document.getElementById('other-checkbox');
