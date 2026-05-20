@@ -1,0 +1,2102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Expert pharmacy consultation with Dr. Ryan Mwirigi. Personal, evidence-based guidance on medications, drug interactions, prescriptions, and chronic disease management — from Nairobi, Kenya.">
+<title>DawaConsult | Dr. Ryan Mwirigi</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 140'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230B1F3A'/%3E%3Cstop offset='100%25' stop-color='%230E7C7B'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpolygon points='70,4 127,37 127,103 70,136 13,103 13,37' fill='url(%23g)'/%3E%3Crect x='61' y='42' width='18' height='56' rx='4' fill='%232ECC71'/%3E%3Crect x='42' y='61' width='56' height='18' rx='4' fill='%232ECC71'/%3E%3Ccircle cx='70' cy='70' r='7' fill='%230B1F3A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1F3A;
+    --teal: #0E7C7B;
+    --teal-light: #12A19F;
+    --gold: #C8A45A;
+    --gold-light: #E2C47E;
+    --cream: #F5F0E8;
+    --white: #FDFCFA;
+    --text: #1A2E44;
+    --muted: #6B7E94;
+    --border: rgba(200,164,90,0.25);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.4rem 5vw;
+    background: transparent;
+    backdrop-filter: none;
+    border-bottom: 1px solid transparent;
+    transition: background 0.3s cubic-bezier(0.4,0,0.2,1), backdrop-filter 0.3s, border-color 0.3s, padding 0.3s;
+  }
+
+  nav.scrolled {
+    background: rgba(253,252,250,0.88);
+    backdrop-filter: blur(18px);
+    border-bottom-color: var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: color 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .nav-logo span { 
+    color: rgba(255,255,255,0.85); 
+    transition: color 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  nav.scrolled .nav-logo { color: var(--navy); }
+  nav.scrolled .nav-logo span { color: var(--teal); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.4rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    transition: color 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  nav.scrolled .nav-links a { color: var(--muted); }
+  nav.scrolled .nav-links a:hover { color: var(--teal); }
+
+  .nav-cta {
+    background: var(--teal);
+    color: var(--white) !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 2px;
+  }
+
+  .nav-cta:hover { background: var(--teal-light); color: var(--white) !important; }
+
+  /* ── HERO: FULL-BLEED IMAGE STACK ── */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 5vw 5rem;
+    overflow: hidden;
+  }
+
+  /* The living image background */
+  .hero-image-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+  }
+
+  .hero-bg-img.active {
+    opacity: 1;
+    z-index: 2;
+    animation: kenBurns 7s ease-out forwards;
+  }
+
+  @keyframes kenBurns {
+    0% { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.1) translate(-1%, -1%); }
+  }
+
+  /* Dark overlay so text is readable */
+  .hero-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(11,31,58,0.82) 0%, rgba(11,31,58,0.65) 40%, rgba(11,31,58,0.75) 100%);
+    z-index: 3;
+  }
+
+  /* Content sits on top */
+  .hero-content {
+    position: relative;
+    z-index: 4;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(200,164,90,0.4);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 1.8rem;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+    font-weight: 300;
+    line-height: 1.08;
+    color: var(--white);
+    margin-bottom: 1.6rem;
+    animation: fadeUp 0.8s 0.1s ease both;
+    text-shadow: 0 2px 20px rgba(11,31,58,0.3);
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--teal-light);
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: rgba(253,252,250,0.85);
+    max-width: 520px;
+    margin: 0 auto 2.8rem;
+    font-weight: 300;
+    animation: fadeUp 0.8s 0.2s ease both;
+    text-shadow: 0 1px 10px rgba(11,31,58,0.2);
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--teal);
+    color: var(--white);
+    padding: 0.95rem 2.4rem;
+    border: none;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--teal-light); transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    padding: 0.95rem 2.4rem;
+    border: 1.5px solid rgba(253,252,250,0.5);
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover { background: var(--white); color: var(--navy); border-color: var(--white); }
+
+  /* ── SECTION BASE ── */
+  section { padding: 7rem 5vw; }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    color: var(--navy);
+    line-height: 1.15;
+    max-width: 520px;
+    margin-bottom: 1.4rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--teal); }
+
+  .section-sub {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--muted);
+    max-width: 520px;
+    font-weight: 300;
+  }
+
+  /* ── SERVICES ── */
+  .services-section {
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .services-section::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(14,124,123,0.15) 0%, transparent 70%);
+  }
+
+  .services-section .section-label { color: var(--gold); }
+
+  .services-section .section-title { color: var(--white); max-width: none; }
+
+  .services-section .section-sub { color: rgba(253,252,250,0.55); }
+
+  .services-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+    margin-bottom: 4rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .service-card {
+    background: var(--navy);
+    padding: 3rem 2.4rem;
+    border: 1px solid rgba(200,164,90,0.12);
+    transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: default;
+  }
+
+  .service-card:hover {
+    background: rgba(14,124,123,0.12);
+    border-color: rgba(14,124,123,0.4);
+    transform: translateY(-3px);
+  }
+
+  .service-icon {
+    width: 48px; height: 48px;
+    border-radius: 4px;
+    background: rgba(200,164,90,0.1);
+    border: 1px solid rgba(200,164,90,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.4rem;
+    font-size: 1.3rem;
+  }
+
+  .service-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.7rem;
+  }
+
+  .service-desc {
+    font-size: 0.84rem;
+    line-height: 1.7;
+    color: rgba(253,252,250,0.5);
+    font-weight: 300;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how-section { background: var(--cream); }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+
+  .step {
+    position: relative;
+    padding-top: 1rem;
+  }
+
+  .step::before {
+    content: '';
+    position: absolute;
+    top: 22px; left: calc(2.2rem + 16px);
+    right: -2rem;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+
+  .step:last-child::before { display: none; }
+
+  .step-num {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 1.4rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .step-desc {
+    font-size: 0.84rem;
+    line-height: 1.65;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  /* ── WHY ── */
+  .why-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    padding: 7rem 5vw;
+  }
+
+  .why-list {
+    list-style: none;
+    margin-top: 2.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+
+  .why-item {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+  }
+
+  .why-check {
+    width: 32px; height: 32px;
+    min-width: 32px;
+    border-radius: 50%;
+    background: rgba(14,124,123,0.08);
+    border: 1.5px solid var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--teal);
+    font-size: 0.8rem;
+    margin-top: 1px;
+  }
+
+  .why-text strong {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 0.2rem;
+  }
+
+  .why-text span {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .why-visual {
+    position: relative;
+  }
+
+  .quote-block {
+    background: var(--navy);
+    border-radius: 4px;
+    padding: 3rem 2.8rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .quote-block::after {
+    content: '"';
+    position: absolute;
+    top: -20px; right: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12rem;
+    color: rgba(200,164,90,0.08);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .quote-author {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .credential-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: 2rem;
+  }
+
+  .tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--teal);
+    border: 1px solid rgba(14,124,123,0.3);
+    padding: 0.35rem 0.85rem;
+    border-radius: 100px;
+    background: rgba(14,124,123,0.06);
+  }
+
+  /* ── CONSULT FORM ── */
+  .consult-section {
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    padding: 7rem 5vw;
+    align-items: start;
+  }
+
+  .form-wrap {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 20px 60px rgba(11,31,58,0.07);
+  }
+
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+  }
+
+  .form-sub {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    background: var(--cream);
+    border: 1px solid rgba(11,31,58,0.12);
+    border-radius: 2px;
+    padding: 0.75rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    color: var(--text);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    appearance: none;
+    outline: none;
+  }
+
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(14,124,123,0.1);
+    background: var(--white);
+  }
+
+  .form-textarea { resize: vertical; min-height: 100px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    border-radius: 2px;
+    padding: 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 0.5rem;
+  }
+
+  .form-submit:hover { background: var(--teal); transform: translateY(-1px); }
+
+  .consult-info { padding-top: 0.5rem; }
+
+  .info-block {
+    margin-bottom: 2.4rem;
+  }
+
+  .info-block-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+  }
+
+  .info-block-text {
+    font-size: 0.84rem;
+    color: var(--muted);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  .contact-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.88rem;
+    color: var(--text);
+  }
+
+  .contact-icon {
+    width: 36px; height: 36px;
+    border-radius: 4px;
+    background: rgba(14,124,123,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    padding: 4rem 5vw 2.5rem;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 4rem;
+    border-top: 1px solid rgba(200,164,90,0.15);
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.02em;
+  }
+
+  .footer-brand span { color: var(--teal-light); }
+
+  .footer-desc {
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: rgba(253,252,250,0.4);
+    font-weight: 300;
+  }
+
+  .footer-col-title {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .footer-links a {
+    font-size: 0.84rem;
+    color: rgba(253,252,250,0.45);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--white); }
+
+  .footer-bottom {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.75rem;
+    color: rgba(253,252,250,0.3);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── PAYMENT FLOW ── */
+  .payment-flow {
+    background: var(--navy);
+    border-radius: 4px;
+    padding: 1.8rem 2rem;
+    margin: 1.8rem 0 1.8rem;
+    border: 1px solid rgba(200,164,90,0.15);
+  }
+
+  .payment-flow-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 1.2rem;
+  }
+
+  .payment-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .pay-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+  }
+
+  .pay-step-num {
+    width: 24px; height: 24px;
+    min-width: 24px;
+    border-radius: 50%;
+    background: rgba(14,124,123,0.25);
+    border: 1.5px solid var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--teal-light);
+    margin-top: 1px;
+  }
+
+  .pay-step-text {
+    font-size: 0.83rem;
+    color: rgba(253,252,250,0.6);
+    line-height: 1.55;
+    font-weight: 300;
+  }
+
+  .pay-step-text strong { color: var(--white); font-weight: 500; }
+
+  .mpesa-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(200,164,90,0.2);
+    border-radius: 3px;
+    padding: 0.75rem 1rem;
+  }
+
+  .mpesa-logo {
+    background: #4CAF50;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  .mpesa-details {
+    font-size: 0.78rem;
+    color: rgba(253,252,250,0.55);
+    font-weight: 300;
+  }
+
+  /* ── HAMBURGER ── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  nav.scrolled .hamburger span { background: var(--navy); }
+
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 60px; left: 0; right: 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 5vw;
+    flex-direction: column;
+    gap: 0;
+    z-index: 99;
+    box-shadow: 0 10px 30px rgba(11,31,58,0.08);
+  }
+
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s;
+  }
+
+  .mobile-menu a:last-child {
+    border-bottom: none;
+    color: var(--teal);
+    font-weight: 600;
+    padding-top: 1.2rem;
+  }
+
+  .mobile-menu a:hover { color: var(--teal); }
+
+  @media (max-width: 900px) {
+    .hamburger { display: flex; }
+  }
+
+  /* ── FEEDBACK ── */
+  .feedback-section { background: var(--navy); padding: 7rem 5vw; }
+  .feedback-inner { max-width: 680px; margin: 0 auto; }
+  .feedback-section .section-label { color: var(--gold); }
+  .feedback-section .section-title { color: var(--white); }
+  .feedback-section .section-title em { color: var(--teal-light); }
+  .feedback-section .section-sub { color: rgba(253,252,250,0.5); margin-bottom: 2.5rem; }
+  .feedback-form-wrap { background: rgba(255,255,255,0.04); border: 1px solid rgba(200,164,90,0.15); border-radius: 4px; padding: 2.5rem; }
+  .feedback-form-wrap .form-label { color: rgba(253,252,250,0.6); }
+  .feedback-form-wrap .form-textarea { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); color: var(--white); }
+  .feedback-form-wrap .form-textarea::placeholder { color: rgba(253,252,250,0.3); }
+  .feedback-options { display: flex; flex-direction: column; gap: 0.7rem; margin-top: 0.5rem; margin-bottom: 0.5rem; }
+  .feedback-option { display: flex; align-items: center; gap: 0.7rem; font-size: 0.88rem; color: rgba(253,252,250,0.65); cursor: pointer; font-weight: 300; }
+  .feedback-option input { accent-color: var(--teal); width: 16px; height: 16px; cursor: pointer; }
+  .feedback-option:hover { color: var(--white); }
+  .feedback-form-wrap .form-submit { background: var(--teal); margin-top: 1.5rem; }
+  .feedback-form-wrap .form-submit:hover { background: var(--teal-light); }
+
+  .wa-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #25D366;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.75rem 1.4rem 0.75rem 1rem;
+    border-radius: 100px;
+    box-shadow: 0 8px 28px rgba(37,211,102,0.4);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: fadeUp 0.8s 0.6s ease both;
+  }
+  .wa-float:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(37,211,102,0.5); }
+  .wa-float svg { width: 22px; height: 22px; fill: #fff; flex-shrink: 0; }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed;
+    bottom: 5.5rem;
+    right: 2rem;
+    z-index: 998;
+    background: var(--navy);
+    color: var(--white);
+    padding: 0.9rem 1.4rem;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    box-shadow: 0 8px 24px rgba(11,31,58,0.2);
+    border-left: 3px solid var(--teal);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+    max-width: 280px;
+  }
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+  /* ── PRICING ── */
+  .pricing-section {
+    background: var(--white);
+    padding: 7rem 5vw;
+  }
+
+  .pricing-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .pricing-header .section-title { margin: 0 auto 1rem; text-align: center; }
+  .pricing-header .section-sub { margin: 0 auto; text-align: center; }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .pricing-card {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2.8rem 2.2rem;
+    position: relative;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--white);
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 60px rgba(11,31,58,0.1);
+  }
+
+  .pricing-card.featured {
+    background: var(--navy);
+    border-color: transparent;
+    box-shadow: 0 20px 60px rgba(11,31,58,0.18);
+  }
+
+  .pricing-card.featured::before {
+    content: 'Most Popular';
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    color: var(--navy);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 1.1rem;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .pricing-tier {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.6rem;
+  }
+
+  .pricing-card.featured .pricing-tier { color: var(--gold); }
+
+  .pricing-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 1.2rem;
+  }
+
+  .pricing-card.featured .pricing-name { color: var(--white); }
+
+  .pricing-amount {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.3rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .pricing-currency {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .pricing-card.featured .pricing-currency { color: rgba(253,252,250,0.5); }
+
+  .pricing-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--navy);
+  }
+
+  .pricing-card.featured .pricing-price { color: var(--white); }
+
+  .pricing-period {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .pricing-card.featured .pricing-period { color: rgba(253,252,250,0.45); }
+
+  .pricing-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 1.8rem;
+    font-weight: 300;
+    padding-bottom: 1.8rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pricing-card.featured .pricing-desc {
+    color: rgba(253,252,250,0.45);
+    border-bottom-color: rgba(255,255,255,0.08);
+  }
+
+  .pricing-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-bottom: 2.2rem;
+  }
+
+  .pricing-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    font-size: 0.84rem;
+    color: var(--text);
+    font-weight: 300;
+  }
+
+  .pricing-card.featured .pricing-feature { color: rgba(253,252,250,0.75); }
+
+  .pricing-feature::before {
+    content: '✓';
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--teal);
+    background: rgba(14,124,123,0.1);
+    border: 1px solid rgba(14,124,123,0.25);
+    width: 18px; height: 18px;
+    min-width: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+
+  .pricing-card.featured .pricing-feature::before {
+    color: var(--gold);
+    background: rgba(200,164,90,0.1);
+    border-color: rgba(200,164,90,0.3);
+  }
+
+  .pricing-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.85rem;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1.5px solid var(--navy);
+    color: var(--navy);
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .pricing-btn:hover { background: var(--navy); color: var(--white); }
+
+  .pricing-card.featured .pricing-btn {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+    border-color: transparent;
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  .pricing-card.featured .pricing-btn:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+
+  .pricing-note {
+    text-align: center;
+    margin-top: 2.5rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  .pricing-note span { color: var(--teal); font-weight: 500; }
+
+  /* ── MANIFESTO ── */
+  .manifesto-section {
+    background: var(--cream);
+    padding: 7rem 5vw;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .manifesto-section::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: -200px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,164,90,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .manifesto-section::after {
+    content: '';
+    position: absolute;
+    bottom: -200px; right: -200px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(14,124,123,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .manifesto-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+
+  .manifesto-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.6rem;
+  }
+
+  .manifesto-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 300;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 2.8rem;
+  }
+
+  .manifesto-heading em { font-style: italic; color: var(--teal); }
+
+  .manifesto-body p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+    line-height: 1.75;
+    color: var(--text);
+    font-weight: 400;
+    margin-bottom: 1.4rem;
+  }
+
+  .manifesto-body p em {
+    font-style: italic;
+    color: var(--muted);
+  }
+
+  .manifesto-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 2.4rem auto;
+  }
+
+  .manifesto-closing {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 1.8vw, 1.5rem) !important;
+    font-style: italic;
+    color: var(--navy) !important;
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
+  }
+
+  .manifesto-closing strong {
+    color: var(--teal);
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  .manifesto-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2.4rem;
+    padding: 0.85rem 1.8rem;
+    border: 1.5px solid var(--navy);
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy);
+    text-decoration: none;
+    transition: background 0.25s, color 0.25s, transform 0.2s, letter-spacing 0.25s;
+  }
+
+  .manifesto-link:hover {
+    background: var(--navy);
+    color: var(--white);
+    transform: translateY(-1px);
+    letter-spacing: 0.1em;
+  }
+
+  .manifesto-link span { transition: transform 0.25s; }
+  .manifesto-link:hover span { transform: translateX(4px); }
+
+  /* ── WHO THIS IS FOR ── */
+  .audience-section {
+    padding: 7rem 5vw;
+    background: var(--white);
+    position: relative;
+  }
+
+  .audience-header {
+    max-width: 720px;
+    margin: 0 auto 4rem;
+    text-align: center;
+  }
+
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .audience-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--teal);
+    padding: 1.8rem 1.8rem;
+    border-radius: 2px;
+    display: flex;
+    gap: 1.1rem;
+    align-items: flex-start;
+    transition: transform 0.25s, box-shadow 0.25s, border-left-color 0.25s;
+  }
+
+  .audience-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(11,31,58,0.08);
+    border-left-color: var(--gold);
+  }
+
+  .audience-icon {
+    width: 36px; height: 36px;
+    min-width: 36px;
+    border-radius: 50%;
+    background: rgba(14,124,123,0.08);
+    border: 1px solid rgba(14,124,123,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+  }
+
+  .audience-text strong {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+  }
+
+  .audience-text span {
+    font-size: 0.86rem;
+    color: var(--muted);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .audience-closing {
+    text-align: center;
+    margin-top: 3rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--navy);
+    font-weight: 400;
+  }
+
+  .audience-closing em { color: var(--teal); font-weight: 500; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { padding-top: 6rem; }
+    .hero-title { font-size: 2.6rem; }
+    .hero-desc { font-size: 0.95rem; }
+    .services-header { grid-template-columns: 1fr; gap: 2rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .step::before { display: none; }
+    .why-section { grid-template-columns: 1fr; }
+    .audience-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
+    .consult-section { grid-template-columns: 1fr; }
+    footer {
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem 2rem;
+    }
+    footer > div:first-child {
+      grid-column: 1 / -1;
+    }
+    .nav-links { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    nav { padding: 1rem 4vw; }
+    section { padding: 4rem 5vw; }
+    .hero { padding: 5rem 5vw 3rem; min-height: unset; }
+    .hero-badge { margin-top: 1rem; }
+    .hero-title { font-size: 2.2rem; margin-top: 1rem; }
+    .hero-desc { font-size: 0.9rem; max-width: 100%; }
+    .hero-actions { flex-direction: column; align-items: stretch; gap: 0.8rem; }
+    .btn-primary, .btn-outline { width: 100%; text-align: center; padding: 0.75rem 1rem; }
+    .services-section { padding: 4rem 5vw; }
+    .services-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .service-card { padding: 1.8rem 1.5rem; }
+    .how-section { padding: 4rem 5vw; }
+    .steps { grid-template-columns: 1fr; gap: 1.5rem; }
+    .why-section { padding: 4rem 5vw; gap: 2rem; }
+    .quote-block { padding: 2rem 1.5rem; }
+    .quote-text { font-size: 1.2rem; }
+    .manifesto-section { padding: 4rem 5vw; }
+    .manifesto-body p { font-size: 1rem; }
+    .audience-section { padding: 4rem 5vw; }
+    .audience-card { padding: 1.4rem 1.3rem; }
+    .pricing-section { padding: 4rem 5vw; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 100%; }
+    .pricing-card { padding: 2rem 1.5rem; }
+    .pricing-price { font-size: 2.2rem; }
+    .consult-section { padding: 4rem 5vw; gap: 3rem; }
+    .form-wrap { padding: 2rem 1.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .payment-flow { padding: 1.4rem 1.2rem; }
+    footer { padding: 3rem 5vw 6rem; gap: 2rem 1.4rem; }
+    .feedback-section { padding: 4rem 5vw; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .section-title { font-size: 1.8rem; }
+    .wa-float { padding: 0.65rem 1rem; font-size: 0.75rem; }
+    .toast { right: 1rem; left: 1rem; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="navHex" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#0B1F3A"/>
+          <stop offset="100%" stop-color="#0E7C7B"/>
+        </linearGradient>
+      </defs>
+      <polygon points="70,4 127,37 127,103 70,136 13,103 13,37" fill="url(#navHex)"/>
+      <rect x="61" y="42" width="18" height="56" rx="4" fill="#2ECC71"/>
+      <rect x="42" y="61" width="56" height="18" rx="4" fill="#2ECC71"/>
+      <circle cx="70" cy="70" r="7" fill="#0B1F3A"/>
+    </svg>
+    <span style="font-size:2rem;font-weight:700;letter-spacing:-0.03em;font-family:'Cormorant Garamond',serif;color:var(--navy);">Dawa<span style="color:var(--teal);font-weight:300;">Consult</span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#mission">Mission</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#who">Who It's For</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#consult" class="nav-cta">Book a Consult</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#mission" onclick="closeMobileMenu()">Mission</a>
+  <a href="#services" onclick="closeMobileMenu()">Services</a>
+  <a href="#how" onclick="closeMobileMenu()">How It Works</a>
+  <a href="#who" onclick="closeMobileMenu()">Who It's For</a>
+  <a href="#about" onclick="closeMobileMenu()">About</a>
+  <a href="#pricing" onclick="closeMobileMenu()">Pricing</a>
+  <a href="#consult" onclick="closeMobileMenu()">Book a Consult →</a>
+</div>
+
+<!-- HERO: FULL-BLEED LIVING IMAGE STACK -->
+<section class="hero" id="home">
+  <!-- Full-bleed background images (NO PEOPLE) -->
+  <div class="hero-image-bg">
+    <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=1600&q=80" 
+         alt="White prescription capsules on clean surface" 
+         class="hero-bg-img active" 
+         data-caption="Prescription Guidance">
+    <img src="https://images.unsplash.com/photo-1555633514-abcee6ab92e1?w=1600&q=80" 
+         alt="Prescription bottle and medical paperwork" 
+         class="hero-bg-img" 
+         data-caption="Drug Interaction Check">
+    <img src="images/pillplannerpro.jpeg" 
+         alt="Weekly pill organizer for managing chronic medications" 
+         class="hero-bg-img" 
+         data-caption="Chronic Disease Support">
+    <!-- Dark overlay so text is readable -->
+    <div class="hero-bg-overlay"></div>
+  </div>
+
+  <!-- Text content centered over images -->
+  <div class="hero-content">
+    <div class="hero-badge">Consultant Pharmacist · Kenya</div>
+    <h1 class="hero-title">
+      Expert pharmacy<br>advice, <em>personally</em><br>for you.
+    </h1>
+    <p class="hero-desc">
+      Connect directly with Dr. Ryan Mwirigi for clear, trusted guidance on your medications, health conditions, and drug interactions — from the comfort of wherever you are.
+    </p>
+    <div class="hero-actions">
+      <a href="#consult" class="btn-primary">Book a Consultation</a>
+      <a href="#services" class="btn-outline">View Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO TEASER -->
+<section class="manifesto-section" id="mission">
+  <div class="manifesto-inner">
+    <div class="manifesto-label reveal">Why DawaConsult Exists</div>
+    <h2 class="manifesto-heading reveal">The conversation you didn't get to have at the <em>counter</em>.</h2>
+    <div class="manifesto-body">
+      <p class="manifesto-closing reveal">If it matters to you, <strong>it matters to us.</strong></p>
+      <a href="story.html" class="manifesto-link reveal">Read our story <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="services-header">
+    <div>
+      <div class="section-label">What I Offer</div>
+      <h2 class="section-title" style="color:var(--white)">Comprehensive pharmacy <em style="color:var(--teal-light)">consultation</em> services</h2>
+    </div>
+    <p class="section-sub">From medication reviews to chronic disease guidance, every consultation is tailored, evidence-based, and delivered with clarity.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">💊</div>
+      <div class="service-title">Medication Review</div>
+      <p class="service-desc">Comprehensive review of your current medications to assess effectiveness, safety, and potential interactions.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">⚕️</div>
+      <div class="service-title">Drug Interaction Check</div>
+      <p class="service-desc">Identify and explain potential interactions between prescribed drugs, supplements, and over-the-counter products.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📋</div>
+      <div class="service-title">Prescription Guidance</div>
+      <p class="service-desc">Understand what your prescription means, how to take it correctly, and what side effects to watch out for.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🩺</div>
+      <div class="service-title">Chronic Disease Support</div>
+      <p class="service-desc">Tailored advice for managing diabetes, hypertension, asthma, and other long-term conditions through proper medication adherence.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🧬</div>
+      <div class="service-title">Lab Result Interpretation</div>
+      <p class="service-desc">Help understanding your blood work, lab panels, and what the numbers mean for your medication plan.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🌿</div>
+      <div class="service-title">Herbal & OTC Advice</div>
+      <p class="service-desc">Evidence-based guidance on herbal supplements and over-the-counter products — safety, efficacy, and compatibility with your medications.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+  <div class="section-label reveal">Simple Process</div>
+  <h2 class="section-title reveal">How a consultation <em>works</em></h2>
+  <p class="section-sub reveal">Getting pharmacy advice has never been this straightforward. Four steps stand between you and clear answers.</p>
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-num">01</div>
+      <div class="step-title">Submit Your Query</div>
+      <p class="step-desc">Fill in the consultation form with your medication details, condition, and specific question.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">02</div>
+      <div class="step-title">Review & Preparation</div>
+      <p class="step-desc">Dr. Ryan reviews your information and prepares a thorough, evidence-based response.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">03</div>
+      <div class="step-title">Consultation Session</div>
+      <p class="step-desc">Receive your response via chat, call, or video — whichever suits you best.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">04</div>
+      <div class="step-title">Follow-Up Support</div>
+      <p class="step-desc">Have a question after? Follow-up queries are welcomed as part of the consultation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO THIS IS FOR -->
+<section class="audience-section" id="who">
+  <div class="audience-header">
+    <div class="section-label reveal">Who This Is For</div>
+    <h2 class="section-title reveal" style="margin: 0 auto 1.4rem;">Made for people who want their <em>medications</em> to make sense</h2>
+    <p class="section-sub reveal" style="margin: 0 auto;">If you've ever held a prescription and wondered what it actually does — DawaConsult was built for you.</p>
+  </div>
+  <div class="audience-grid">
+    <div class="audience-card reveal">
+      <div class="audience-icon">🩺</div>
+      <div class="audience-text">
+        <strong>Anyone managing a chronic condition</strong>
+        <span>Diabetes, hypertension, asthma, HIV, thyroid, or any long-term medication regimen that needs proper review.</span>
+      </div>
+    </div>
+    <div class="audience-card reveal">
+      <div class="audience-icon">💊</div>
+      <div class="audience-text">
+        <strong>People on multiple medications</strong>
+        <span>When the pills add up, so does the risk of interactions, side effects, and timing mistakes you don't know about.</span>
+      </div>
+    </div>
+    <div class="audience-card reveal">
+      <div class="audience-icon">👨‍👩‍👧</div>
+      <div class="audience-text">
+        <strong>Caregivers and diaspora families</strong>
+        <span>Looking after a parent, child, or relative — locally or from abroad — and you want to get their care right.</span>
+      </div>
+    </div>
+    <div class="audience-card reveal">
+      <div class="audience-icon">📋</div>
+      <div class="audience-text">
+        <strong>Anyone confused by a prescription</strong>
+        <span>Unfamiliar drug names, unclear instructions, or side effects that worry you — bring it here for a real answer.</span>
+      </div>
+    </div>
+  </div>
+  <p class="audience-closing reveal">If your medication matters to you, <em>it matters here.</em></p>
+</section>
+
+<!-- WHY ME -->
+<section class="why-section" id="about">
+  <div>
+    <div class="section-label reveal">Why Dr. Ryan</div>
+    <h2 class="section-title reveal">Clinical knowledge you can <em>trust</em></h2>
+    <p class="section-sub reveal">Built on real hands-on experience from hospital setups — not just textbook knowledge.</p>
+    <ul class="why-list">
+      <li class="why-item reveal">
+        <div class="why-check">✓</div>
+        <div class="why-text">
+          <strong>Active Clinical Internship</strong>
+          <span>8+ months of hands-on experience at hospital setups, working with real patients and complex cases daily.</span>
+        </div>
+      </li>
+      <li class="why-item reveal">
+        <div class="why-check">✓</div>
+        <div class="why-text">
+          <strong>Evidence-Based Advice</strong>
+          <span>Every recommendation is grounded in current clinical guidelines and pharmacological evidence.</span>
+        </div>
+      </li>
+      <li class="why-item reveal">
+        <div class="why-check">✓</div>
+        <div class="why-text">
+          <strong>Clear, Plain Language</strong>
+          <span>Complex pharmacy information explained in a way you can actually understand and act on.</span>
+        </div>
+      </li>
+      <li class="why-item reveal">
+        <div class="why-check">✓</div>
+        <div class="why-text">
+          <strong>Confidential & Personalized</strong>
+          <span>Your health information stays private. Every consultation is uniquely tailored to your situation.</span>
+        </div>
+      </li>
+    </ul>
+    <div class="credential-tags reveal">
+      <span class="tag">Pharmacist</span>
+      <span class="tag">Medication Safety</span>
+      <span class="tag">Patient Counselling</span>
+      <span class="tag">Evidence-Based Practice</span>
+    </div>
+  </div>
+  <div class="why-visual reveal">
+    <div class="quote-block">
+      <p class="quote-text">"Good pharmacy practice isn't just dispensing — it's ensuring every patient understands and benefits from their treatment."</p>
+      <div class="quote-author">— Dr. Ryan Mwirigi, Consultant Pharmacist</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="pricing-header">
+    <div class="section-label reveal">Transparent Pricing</div>
+    <h2 class="section-title reveal">Simple, clear <em>packages</em></h2>
+    <p class="section-sub reveal">Choose the level of support that fits your needs. All consultations are confidential, evidence-based, and delivered personally by Dr. Ryan.</p>
+  </div>
+  <div class="pricing-grid">
+
+    <div class="pricing-card reveal">
+      <div class="pricing-tier">Starter</div>
+      <div class="pricing-name">Quick Consult</div>
+      <div class="pricing-amount">
+        <span class="pricing-currency">KSh</span>
+        <span class="pricing-price">500</span>
+      </div>
+      <div class="pricing-period">per consultation</div>
+      <p class="pricing-desc">Perfect for a single focused question about your medication or prescription.</p>
+      <ul class="pricing-features">
+        <li class="pricing-feature">1 specific pharmacy question</li>
+        <li class="pricing-feature">Written response within 24hrs</li>
+        <li class="pricing-feature">Medication or dosage guidance</li>
+        <li class="pricing-feature">Email delivery</li>
+      </ul>
+      <a href="#consult" class="pricing-btn">Get Started</a>
+    </div>
+
+    <div class="pricing-card featured reveal">
+      <div class="pricing-tier">Standard</div>
+      <div class="pricing-name">Full Consultation</div>
+      <div class="pricing-amount">
+        <span class="pricing-currency">KSh</span>
+        <span class="pricing-price">1,200</span>
+      </div>
+      <div class="pricing-period">per consultation</div>
+      <p class="pricing-desc">A comprehensive session covering your full medication profile and health concerns.</p>
+      <ul class="pricing-features">
+        <li class="pricing-feature">Full medication review</li>
+        <li class="pricing-feature">Drug interaction screening</li>
+        <li class="pricing-feature">Personalized recommendations</li>
+        <li class="pricing-feature">1 follow-up question included</li>
+        <li class="pricing-feature">Response via call or WhatsApp</li>
+      </ul>
+      <a href="#consult" class="pricing-btn">Book Now</a>
+    </div>
+
+    <div class="pricing-card reveal">
+      <div class="pricing-tier">Premium</div>
+      <div class="pricing-name">Ongoing Support</div>
+      <div class="pricing-amount">
+        <span class="pricing-currency">KSh</span>
+        <span class="pricing-price">3,500</span>
+      </div>
+      <div class="pricing-period">per month</div>
+      <p class="pricing-desc">Ideal for patients managing chronic conditions who need consistent pharmacy guidance.</p>
+      <ul class="pricing-features">
+        <li class="pricing-feature">Unlimited consultations</li>
+        <li class="pricing-feature">Monthly medication review</li>
+        <li class="pricing-feature">Chronic disease monitoring</li>
+        <li class="pricing-feature">Priority response time</li>
+        <li class="pricing-feature">Lab result interpretation</li>
+        <li class="pricing-feature">Direct WhatsApp access</li>
+      </ul>
+      <a href="#consult" class="pricing-btn">Get Started</a>
+    </div>
+
+  </div>
+  <p class="pricing-note reveal">Not sure which plan is right for you? <a href="https://wa.me/254707504456?text=Hi%20Dr.%20Ryan%2C%20I%27d%20like%20help%20choosing%20a%20consultation%20plan." target="_blank" rel="noopener" style="color:var(--teal);font-weight:500;text-decoration:none;">Send a message on WhatsApp</a> and Dr. Ryan will help you decide.</p>
+</section>
+
+<!-- CONSULT FORM -->
+<section class="consult-section" id="consult">
+  <div class="consult-info">
+    <div class="section-label">Get in Touch</div>
+    <h2 class="section-title">Book your <em>consultation</em> today</h2>
+    <p class="section-sub">Have a medication question? Unsure about a prescription? Fill in the form and Dr. Ryan will respond with clear, professional guidance.</p>
+    <div style="margin-top:2.5rem;">
+      <div class="info-block">
+        <div class="info-block-title">Response Time</div>
+        <div class="info-block-text">Most consultations are addressed within 24 hours on business days. Urgent queries are prioritized.</div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-title">Confidentiality</div>
+        <div class="info-block-text">All consultation details are handled with strict confidentiality. Your health data will never be shared.</div>
+      </div>
+
+      <!-- PAYMENT FLOW -->
+      <div class="payment-flow">
+        <div class="payment-flow-title">💳 How Payment Works</div>
+        <div class="payment-steps">
+          <div class="pay-step">
+            <div class="pay-step-num">1</div>
+            <div class="pay-step-text"><strong>Submit your request</strong> using the form — no upfront payment needed.</div>
+          </div>
+          <div class="pay-step">
+            <div class="pay-step-num">2</div>
+            <div class="pay-step-text"><strong>Dr. Ryan reviews</strong> your query and sends you a confirmation with the consultation fee.</div>
+          </div>
+          <div class="pay-step">
+            <div class="pay-step-num">3</div>
+            <div class="pay-step-text"><strong>Pay via M-Pesa</strong> Send Money to <strong style="color:var(--teal)">0707 504 456</strong> once confirmed.</div>
+          </div>
+          <div class="pay-step">
+            <div class="pay-step-num">4</div>
+            <div class="pay-step-text"><strong>Consultation begins</strong> — clear, expert pharmacy advice delivered to you.</div>
+          </div>
+        </div>
+        <div class="mpesa-badge">
+          <span class="mpesa-logo">M-PESA</span>
+          <span class="mpesa-details">Send Money · 0707 504 456 · Dr. Ryan Mwirigi</span>
+        </div>
+      </div>
+
+      <ul class="contact-list">
+        <li class="contact-item">
+          <div class="contact-icon">📧</div>
+          <span><a href="mailto:cryanmwirigi@gmail.com" style="color:inherit;text-decoration:none;">cryanmwirigi@gmail.com</a></span>
+        </li>
+        <li class="contact-item">
+          <div class="contact-icon">📱</div>
+          <span>+254 707 504 456</span>
+        </li>
+        <li class="contact-item">
+          <div class="contact-icon">📍</div>
+          <span>Nairobi, Kenya · Remote Consultations Available</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="form-wrap">
+    <div class="form-title">Request a Consultation</div>
+    <div class="form-sub">Submit your details below — <strong style="color:var(--teal)">no payment required yet.</strong> Dr. Ryan will review and confirm before any fees apply.</div>
+    <form id="consult-form" action="https://formspree.io/f/xlgoyqzb" method="POST">
+    <input type="hidden" name="_subject" value="🩺 DawaConsult — New Consultation Request">
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true">
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="first-name">First Name</label>
+        <input type="text" id="first-name" name="first_name" class="form-input" placeholder="John" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="last-name">Last Name</label>
+        <input type="text" id="last-name" name="last_name" class="form-input" placeholder="Doe" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="email">Email Address</label>
+      <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" required>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="consultation-type">Consultation Type</label>
+      <select id="consultation-type" name="consultation_type" class="form-select" required>
+        <option value="">Select a service...</option>
+        <option>Medication Review</option>
+        <option>Drug Interaction Check</option>
+        <option>Prescription Guidance</option>
+        <option>Chronic Disease Support</option>
+        <option>Lab Result Interpretation</option>
+        <option>Herbal &amp; OTC Advice</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="message">Your Question / Details</label>
+      <textarea id="message" name="message" class="form-textarea" placeholder="Please describe your medications, condition, or question in as much detail as possible..." required></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="preferred-contact">Preferred Contact Method</label>
+      <select id="preferred-contact" name="preferred_contact" class="form-select">
+        <option>Email Response</option>
+        <option>Phone Call</option>
+        <option>WhatsApp</option>
+        <option>Video Call</option>
+      </select>
+    </div>
+    <button type="submit" class="form-submit" id="submit-btn">Submit Consultation Request</button>
+    </form>
+  </div>
+</section>
+
+<!-- FEEDBACK -->
+<section class="feedback-section" id="feedback">
+  <div class="feedback-inner">
+    <div class="section-label reveal">Your Voice Matters</div>
+    <h2 class="section-title reveal">Help me build <em>DawaConsult</em> better for you</h2>
+    <p class="section-sub reveal">Takes 2 minutes. Your honest feedback shapes what comes next 🙏🏾</p>
+    <div class="feedback-form-wrap reveal">
+      <form id="feedback-form" action="https://formspree.io/f/xlgoyqzb" method="POST">
+        <input type="hidden" name="_subject" value="💬 DawaConsult — Feedback Submission">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true">
+        <div class="form-group">
+          <label class="form-label">What would make DawaConsult more useful for you?</label>
+          <div class="feedback-options">
+            <label class="feedback-option"><input type="checkbox" name="useful" value="Faster response time"> Faster response time</label>
+            <label class="feedback-option"><input type="checkbox" name="useful" value="More affordable pricing"> More affordable pricing</label>
+            <label class="feedback-option"><input type="checkbox" name="useful" value="More services offered"> More services offered</label>
+            <label class="feedback-option"><input type="checkbox" name="useful" value="Easier payment methods"> Easier payment methods</label>
+            <label class="feedback-option"><input type="checkbox" id="other-checkbox" name="useful" value="Other"> Other</label>
+            <div id="other-input-wrap" style="display:none; margin-top:0.5rem;">
+              <input type="text" name="useful_other" id="other-input" class="form-input" placeholder="Please specify..." style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.1);color:var(--white);">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="health-questions">What medication or health questions do you usually have?</label>
+          <textarea id="health-questions" name="health_questions" class="form-textarea" placeholder="Be as honest as you like — this helps me serve you better..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Have you ever been confused by a prescription or medication?</label>
+          <div class="feedback-options">
+            <label class="feedback-option"><input type="radio" name="confused" value="Yes, all the time"> Yes, all the time</label>
+            <label class="feedback-option"><input type="radio" name="confused" value="Sometimes"> Sometimes</label>
+            <label class="feedback-option"><input type="radio" name="confused" value="Not really"> Not really</label>
+          </div>
+        </div>
+        <button type="submit" class="form-submit" id="feedback-btn">Submit Feedback</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Dawa<span>Consult</span></div>
+    <p class="footer-desc">DawaConsult — your personal pharmacist, anywhere. Expert pharmacy consultation by Dr. Ryan Mwirigi, delivered with clarity and care.</p>
+  </div>
+  <div>
+    <div class="footer-col-title">Services</div>
+    <ul class="footer-links">
+      <li><a href="#services">Medication Review</a></li>
+      <li><a href="#services">Drug Interactions</a></li>
+      <li><a href="#services">Prescription Guidance</a></li>
+      <li><a href="#services">Chronic Disease Support</a></li>
+      <li><a href="#services">Lab Interpretation</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Information</div>
+    <ul class="footer-links">
+      <li><a href="#about">About Dr. Ryan</a></li>
+      <li><a href="story.html">Our Story</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="#consult">Book a Consult</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 DawaConsult · Dr. Ryan Mwirigi</span>
+    <span>Nairobi, Kenya · Professional Pharmacy Consultation</span>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a class="wa-float" href="https://wa.me/254707504456?text=Hello%20Dr.%20Ryan%2C%20I%27d%20like%20to%20book%20a%20pharmacist%20consultation." target="_blank">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  Chat on WhatsApp
+</a>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✓ Message sent! Dr. Ryan will get back to you shortly.</div>
+
+<script>
+  // ── HERO FULL-BLEED IMAGE STACK ──
+  const heroImages = document.querySelectorAll('.hero-bg-img');
+  let currentHero = 0;
+
+  function nextHero() {
+    currentHero = (currentHero + 1) % heroImages.length;
+    heroImages.forEach((img, i) => {
+      img.classList.toggle('active', i === currentHero);
+    });
+  }
+
+  setInterval(nextHero, 5000);
+
+  // ── NAV: TRANSPARENT ON HERO, SOLID WHEN SCROLLED ──
+  const nav = document.querySelector('nav');
+  const scrollThreshold = window.innerHeight * 0.8;
+
+  function updateNav() {
+    if (window.scrollY > scrollThreshold) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav(); // run once on load in case user reloads mid-page
+
+  // ── FEEDBACK FORM ──
+  const otherCheckbox = document.getElementById('other-checkbox');
+  const otherInputWrap = document.getElementById('other-input-wrap');
+  otherCheckbox.addEventListener('change', function() {
+    otherInputWrap.style.display = this.checked ? 'block' : 'none';
+    if (this.checked) document.getElementById('other-input').focus();
+  });
+
+  const feedbackForm = document.getElementById('feedback-form');
+  const feedbackBtn = document.getElementById('feedback-btn');
+
+  feedbackForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    feedbackBtn.textContent = 'Sending...';
+    feedbackBtn.disabled = true;
+    try {
+      const res = await fetch(feedbackForm.action, {
+        method: 'POST',
+        body: new FormData(feedbackForm),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        feedbackBtn.textContent = '✓ Thank you for your feedback!';
+        feedbackForm.reset();
+      } else { throw new Error('Failed'); }
+    } catch {
+      feedbackBtn.textContent = 'Submit Feedback';
+      feedbackBtn.disabled = false;
+    }
+  });
+
+  // ── MOBILE MENU ──
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  function closeMobileMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+
+  // ── SCROLL REVEAL ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // ── CONSULT FORM ──
+  const form = document.getElementById('consult-form');
+  const btn = document.getElementById('submit-btn');
+  const toast = document.getElementById('toast');
+
+  function showToast(msg, success) {
+    toast.textContent = msg;
+    toast.style.borderLeftColor = success ? 'var(--teal)' : 'var(--gold)';
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 5000);
+  }
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    btn.style.background = 'var(--teal)';
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        btn.textContent = '✓ Request Sent!';
+        form.reset();
+        showToast('✓ Request received! Dr. Ryan will review and send you payment details within 24hrs.', true);
+        setTimeout(() => {
+          btn.textContent = 'Submit Consultation Request';
+          btn.style.background = 'var(--navy)';
+          btn.disabled = false;
+        }, 4000);
+      } else { throw new Error('Failed'); }
+    } catch {
+      btn.textContent = 'Submit Consultation Request';
+      btn.style.background = 'var(--navy)';
+      btn.disabled = false;
+      showToast('Could not send. Please email cryanmwirigi@gmail.com directly.', false);
+    }
+  });
+</script>
+</body>
+</html>
