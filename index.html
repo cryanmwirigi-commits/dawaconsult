@@ -548,6 +548,17 @@
 
   setInterval(nextHero, 5000);
 
+  // ── URL PARAMETER AUTOFILL: pre-select service in dropdown if ?service= is in the URL ──
+  // Triggered when someone arrives from a "Book this consult" button on services.html
+  const params = new URLSearchParams(window.location.search);
+  const serviceParam = params.get('service');
+  if (serviceParam) {
+    const dropdown = document.getElementById('consultation-type');
+    if (dropdown) {
+      dropdown.value = serviceParam;
+    }
+  }
+
   // ── NAV: TRANSPARENT ON HERO, SOLID WHEN SCROLLED ──
   const nav = document.querySelector('nav');
   const scrollThreshold = 10;
