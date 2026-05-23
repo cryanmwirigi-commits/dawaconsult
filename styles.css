@@ -1607,12 +1607,11 @@
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--navy);
-    transition: color 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    color: var(--teal-light);
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
     display: inline-block;
   }
   
   .service-card:hover .service-card-link {
-    color: var(--teal-light);
     transform: translateX(4px);
   }
