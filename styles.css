@@ -1616,32 +1616,35 @@
     transform: translateX(4px);
   }
 
-  /* ── HERO ROTATING WORD (fade) ── */
+  /* ── HERO ROTATING WORD (vertical slide) ── */
   
-  /* Container: relative-positioned so absolute children can stack on top of each other */
+  /* Viewport: only ever shows ONE word's worth of vertical space — the rest of the track is hidden */
   .word-rotate {
     position: relative;
     display: inline-block;
-    vertical-align: baseline;
+    overflow: hidden;
+    vertical-align: bottom;
+    line-height: 1.08;
   }
   
-  /* Invisible longest-word copy that holds the container width steady */
+  /* Invisible longest-word copy that locks the container's width to "personally" width */
   .word-rotate-spacer {
     visibility: hidden;
   }
   
-  /* All rotating words sit absolutely positioned on top of the spacer */
-  .word-rotate-item {
+  /* The "filmstrip" — all words stacked vertically inside. JS translates this up to switch words. */
+  .word-rotate-track {
     position: absolute;
-    left: 0;
     top: 0;
-    width: 100%;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.6s ease-in-out;
+    left: 0;
+    right: 0;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
-  /* The currently-visible word */
-  .word-rotate-item.active {
-    opacity: 1;
+  /* Each word occupies one full line in the track */
+  .word-rotate-item {
+    display: block;
+    text-align: left;
+    line-height: 1.08;
   }

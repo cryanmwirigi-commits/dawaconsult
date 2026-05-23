@@ -77,7 +77,7 @@
   <div class="hero-content">
     <div class="hero-badge">Consultant Pharmacist · Kenya</div>
     <h1 class="hero-title">
-      Expert pharmacy<br>advice, <span class="word-rotate"><em class="word-rotate-spacer">personally</em><em class="word-rotate-item active">personally</em><em class="word-rotate-item">tailored</em><em class="word-rotate-item">adjusted</em></span><br>for you.
+      Expert pharmacy<br>advice, <span class="word-rotate"><em class="word-rotate-spacer">personally</em><span class="word-rotate-track"><em class="word-rotate-item">personally</em><em class="word-rotate-item">tailored</em><em class="word-rotate-item">adjusted</em><em class="word-rotate-item">personally</em></span></span><br>for you.
     </h1>
     <p class="hero-desc">
       Connect directly with Dr. Ryan Mwirigi for clear, trusted guidance on your medications, health conditions, and drug interactions — from the comfort of wherever you are.
@@ -548,15 +548,27 @@
 
   setInterval(nextHero, 5000);
 
-  // ── HERO ROTATING WORD (personally → tailored → adjusted) ──
-  // Cycles every 3 seconds. The CSS handles the fade — JS just toggles the active class.
-  const rotatingWords = document.querySelectorAll('.word-rotate-item');
-  let currentWordIndex = 0;
+  // ── HERO ROTATING WORD (vertical slide: personally → tailored → adjusted → loop) ──
+  // The track holds 4 word items: [personally, tailored, adjusted, personally]
+  // We translate the track up by 1.08em each cycle to reveal the next word.
+  // When we land on the duplicate 4th "personally", we silently snap back to index 0.
+  const wordTrack = document.querySelector('.word-rotate-track');
+  const totalRealWords = 3; // first 3 are the unique words; 4th is the duplicate
+  let slideIndex = 0;
 
   setInterval(() => {
-    rotatingWords[currentWordIndex].classList.remove('active');
-    currentWordIndex = (currentWordIndex + 1) % rotatingWords.length;
-    rotatingWords[currentWordIndex].classList.add('active');
+    slideIndex++;
+    wordTrack.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+    wordTrack.style.transform = `translateY(-${slideIndex * 1.08}em)`;
+
+    // After landing on the duplicate "personally", snap back to index 0 without animation
+    if (slideIndex === totalRealWords) {
+      setTimeout(() => {
+        wordTrack.style.transition = 'none';
+        wordTrack.style.transform = 'translateY(0)';
+        slideIndex = 0;
+      }, 600); // wait for the slide to finish
+    }
   }, 3000);
 
   // ── URL PARAMETER AUTOFILL: pre-select service in dropdown if ?service= is in the URL ──
