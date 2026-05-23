@@ -1441,3 +1441,148 @@
     .wa-float { padding: 0.65rem 1rem; font-size: 0.75rem; }
     .toast { right: 1rem; left: 1rem; max-width: 100%; }
   }
+
+  /* ── SERVICES.HTML PAGE ── */
+
+  .page-header {
+    padding: 9rem 5vw 4rem;
+    background: var(--cream);
+    text-align: center;
+  }
+
+  .page-header-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .page-header .section-label {
+    margin-bottom: 1rem;
+  }
+
+  .page-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem;
+    line-height: 1.1;
+    color: var(--navy);
+    margin: 0 0 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .page-title em {
+    font-style: italic;
+    color: var(--teal);
+  }
+
+  .page-intro {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .service-detail {
+    padding: 5rem 5vw;
+    background: var(--white);
+  }
+
+  .service-detail-alt {
+    background: var(--cream);
+  }
+
+  .service-detail-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .service-detail-icon {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .service-detail h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    color: var(--navy);
+    margin: 0 0 1.2rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .service-detail > .service-detail-inner > p:first-of-type {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text);
+    margin: 0 0 2rem;
+  }
+
+  .service-detail h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    font-weight: 500;
+    margin: 0 0 1rem;
+  }
+
+  .service-detail ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+  }
+
+  .service-detail ul li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+    color: var(--text);
+    font-size: 0.98rem;
+  }
+
+  .service-detail ul li:before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+  }
+
+  .service-detail .best-for {
+    background: rgba(14,124,123,0.06);
+    padding: 1rem 1.2rem;
+    border-left: 3px solid var(--teal);
+    font-size: 0.95rem;
+    margin: 0 0 2rem;
+    color: var(--text);
+  }
+
+  .service-detail .best-for strong {
+    color: var(--navy);
+  }
+
+  .service-detail .btn-primary {
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  nav.scrolled .nav-links a.active { 
+    color: var(--teal); 
+    font-weight: 600; 
+  }
+
+  .mobile-menu a.active {
+    color: var(--teal);
+  }
+
+  @media (max-width: 600px) {
+    .page-header { padding: 7rem 5vw 3rem; }
+    .page-title { font-size: 2.1rem; }
+    .page-intro { font-size: 1rem; }
+    .service-detail { padding: 3.5rem 5vw; }
+    .service-detail h2 { font-size: 1.8rem; }
+    .service-detail > .service-detail-inner > p:first-of-type { font-size: 1rem; }
+    .service-detail ul li { font-size: 0.95rem; }
+  }
