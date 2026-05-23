@@ -77,7 +77,7 @@
   <div class="hero-content">
     <div class="hero-badge">Consultant Pharmacist · Kenya</div>
     <h1 class="hero-title">
-      Expert pharmacy<br>advice, <em>personally</em><br>for you.
+      Expert pharmacy<br>advice, <span class="word-rotate"><em class="word-rotate-spacer">personally</em><em class="word-rotate-item active">personally</em><em class="word-rotate-item">tailored</em><em class="word-rotate-item">adjusted</em></span><br>for you.
     </h1>
     <p class="hero-desc">
       Connect directly with Dr. Ryan Mwirigi for clear, trusted guidance on your medications, health conditions, and drug interactions — from the comfort of wherever you are.
@@ -547,6 +547,17 @@
   }
 
   setInterval(nextHero, 5000);
+
+  // ── HERO ROTATING WORD (personally → tailored → adjusted) ──
+  // Cycles every 3 seconds. The CSS handles the fade — JS just toggles the active class.
+  const rotatingWords = document.querySelectorAll('.word-rotate-item');
+  let currentWordIndex = 0;
+
+  setInterval(() => {
+    rotatingWords[currentWordIndex].classList.remove('active');
+    currentWordIndex = (currentWordIndex + 1) % rotatingWords.length;
+    rotatingWords[currentWordIndex].classList.add('active');
+  }, 3000);
 
   // ── URL PARAMETER AUTOFILL: pre-select service in dropdown if ?service= is in the URL ──
   // Triggered when someone arrives from a "Book this consult" button on services.html
