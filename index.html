@@ -421,6 +421,15 @@
       <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" required>
     </div>
     <div class="form-group">
+      <label class="form-label" for="package">Package</label>
+      <select id="package" name="package" class="form-select" required>
+        <option value="">Select a package...</option>
+        <option value="Quick Consult — KSh 500" data-tier="quick">Quick Consult — KSh 500</option>
+        <option value="Full Consultation — KSh 1,200" data-tier="full">Full Consultation — KSh 1,200</option>
+        <option value="Ongoing Support — KSh 3,500/mo" data-tier="ongoing">Ongoing Support — KSh 3,500/mo</option>
+      </select>
+    </div>
+    <div class="form-group">
       <label class="form-label" for="consultation-type">Consultation Type</label>
       <select id="consultation-type" name="consultation_type" class="form-select" required>
         <option value="">Select a service...</option>
@@ -579,6 +588,18 @@
     const dropdown = document.getElementById('consultation-type');
     if (dropdown) {
       dropdown.value = serviceParam;
+    }
+  }
+
+  // ── URL PARAMETER AUTOFILL: pre-select PACKAGE if ?tier= is in the URL (quick / full / ongoing) ──
+  // The link uses a short code; each <option> carries a matching data-tier, so we
+  // find the option with that code and select it. Mirrors the ?service= logic above.
+  const tierParam = params.get('tier');
+  if (tierParam) {
+    const packageDropdown = document.getElementById('package');
+    if (packageDropdown) {
+      const match = packageDropdown.querySelector(`option[data-tier="${tierParam}"]`);
+      if (match) packageDropdown.value = match.value;
     }
   }
 
