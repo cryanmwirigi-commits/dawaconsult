@@ -295,7 +295,7 @@
         <li class="pricing-feature">Medication safety check</li>
         <li class="pricing-feature">Delivered via email or WhatsApp</li>
       </ul>
-      <a href="index.html?tier=quick#consult" class="pricing-btn">Get Started</a>
+      <a href="#consult" class="pricing-btn" data-tier="quick">Get Started</a>
     </div>
 
     <div class="pricing-card featured reveal">
@@ -314,7 +314,7 @@
         <li class="pricing-feature">Follow-up clarifications as needed</li>
         <li class="pricing-feature">Response via call or WhatsApp</li>
       </ul>
-      <a href="index.html?tier=full#consult" class="pricing-btn">Book Now</a>
+      <a href="#consult" class="pricing-btn" data-tier="full">Book Now</a>
     </div>
 
     <div class="pricing-card reveal">
@@ -334,7 +334,7 @@
         <li class="pricing-feature">Lab result interpretation</li>
         <li class="pricing-feature">Direct WhatsApp access</li>
       </ul>
-      <a href="index.html?tier=ongoing#consult" class="pricing-btn">Get Started</a>
+      <a href="#consult" class="pricing-btn" data-tier="ongoing">Get Started</a>
     </div>
 
   </div>
@@ -602,6 +602,20 @@
       if (match) packageDropdown.value = match.value;
     }
   }
+
+  // ── PRICING CARDS: set the package, then let #consult scroll — NO page reload ──
+  // These buttons live on THIS page, so reloading with ?tier= caused the janky
+  // behaviour. Instead we set the dropdown directly on click; the href="#consult"
+  // does the smooth scroll to the form. Reliable on the first click, every time.
+  document.querySelectorAll('.pricing-btn[data-tier]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const packageDropdown = document.getElementById('package');
+      if (packageDropdown) {
+        const match = packageDropdown.querySelector(`option[data-tier="${btn.dataset.tier}"]`);
+        if (match) packageDropdown.value = match.value;
+      }
+    });
+  });
 
   // ── NAV: TRANSPARENT ON HERO, SOLID WHEN SCROLLED ──
   const nav = document.querySelector('nav');
