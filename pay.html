@@ -50,6 +50,12 @@
   }
   .pay-tier:hover { border-color: var(--teal, #0E7C7B); }
   .pay-tier.selected { border-color: var(--teal, #0E7C7B); box-shadow: 0 0 0 3px rgba(14,124,123,0.14); }
+
+  /* When the package is fixed by the booking flow, hide the others and center it. */
+  .pay-tiers.locked .pay-tier:not(.selected) { display: none; }
+  .pay-tiers.locked .pay-tier { cursor: default; }
+  .pay-tiers.locked .pay-tier.selected { grid-column: 1 / -1; max-width: 360px; margin: 0 auto; }
+  .pay-locked-note { text-align: center; font-size: 0.82rem; opacity: 0.6; margin: -1rem 0 0; font-family: 'DM Sans', sans-serif; }
   .pay-tier-label {
     font-family: 'DM Sans', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em;
     text-transform: uppercase; color: var(--gold, #C8A45A); margin-bottom: 0.4rem;
@@ -245,9 +251,13 @@
     console.log('IntaSend payment in progress...');
   });
 
+  // When the package comes from the booking flow we lock it (no switching).
+  let locked = false;
+
   // ── 1. Pick a package by clicking a card ──
   document.querySelectorAll('.pay-tier').forEach(card => {
     card.addEventListener('click', () => {
+      if (locked) return;                  // package is fixed — ignore clicks
       document.querySelectorAll('.pay-tier').forEach(c => c.classList.remove('selected'));
       card.classList.add('selected');
       selectedTier = card.dataset.tier;
@@ -256,12 +266,27 @@
     });
   });
 
-  // ── 2. Pre-select a package from the URL (e.g. pay.html?tier=full) ──
-  //    This is how the booking hand-off will pre-fill the right package later.
-  const tierParam = new URLSearchParams(window.location.search).get('tier');
+  // ── 2. Arriving from the booking flow: prefill email + LOCK the package ──
+  const urlParams = new URLSearchParams(window.location.search);
+
+  // Prefill the email so the same address flows through and matches the booking.
+  const emailParam = urlParams.get('email');
+  if (emailParam) document.getElementById('pay-email').value = emailParam;
+
+  // Pre-select the package chosen earlier — and lock it so it can't be swapped.
+  const tierParam = urlParams.get('tier');
   if (tierParam && TIERS[tierParam]) {
     const preCard = document.querySelector(`.pay-tier[data-tier="${tierParam}"]`);
-    if (preCard) preCard.click();
+    if (preCard) {
+      preCard.click();                                   // select it (still unlocked here)
+      locked = true;                                     // now fix it
+      const tiersEl = document.querySelector('.pay-tiers');
+      tiersEl.classList.add('locked');
+      const note = document.createElement('p');
+      note.className = 'pay-locked-note';
+      note.textContent = 'Package selected on the previous step.';
+      tiersEl.insertAdjacentElement('afterend', note);
+    }
   }
 
   // ── 3. Update the pay button once a package is chosen ──
