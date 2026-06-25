@@ -716,6 +716,10 @@
         btn.textContent = '✓ Sent! Taking you to booking...';
         showToast('✓ Got it — now pick your appointment time.', true);
 
+        // Fresh request — clear any previous booking guard so they can book anew.
+        sessionStorage.removeItem('dawa_booked');
+        sessionStorage.removeItem('dawa_pay_href');
+
         // Carry the package, email and name into the booking page.
         const pkg = document.getElementById('package');
         const tier = (pkg && pkg.selectedOptions[0]) ? (pkg.selectedOptions[0].dataset.tier || '') : '';
