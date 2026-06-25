@@ -51,10 +51,12 @@
   .pay-tier:hover { border-color: var(--teal, #0E7C7B); }
   .pay-tier.selected { border-color: var(--teal, #0E7C7B); box-shadow: 0 0 0 3px rgba(14,124,123,0.14); }
 
-  /* When the package is fixed by the booking flow, hide the others and center it. */
-  .pay-tiers.locked .pay-tier:not(.selected) { display: none; }
+  /* When the package is fixed by the booking flow, show all three but grey out
+     and disable the ones not chosen. */
   .pay-tiers.locked .pay-tier { cursor: default; }
-  .pay-tiers.locked .pay-tier.selected { grid-column: 1 / -1; max-width: 360px; margin: 0 auto; }
+  .pay-tiers.locked .pay-tier:not(.selected) {
+    opacity: 0.45; filter: grayscale(0.7); pointer-events: none;
+  }
   .pay-locked-note { text-align: center; font-size: 0.82rem; opacity: 0.6; margin: -1rem 0 0; font-family: 'DM Sans', sans-serif; }
   .pay-tier-label {
     font-family: 'DM Sans', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em;
