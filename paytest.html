@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IntaSend Test — KSh 100</title>
+<script src="https://unpkg.com/intasend-inlinejs-sdk@4.0.5/build/intasend-inline.js"></script>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 560px; margin: 3rem auto; padding: 0 1.25rem; color: #0B1F3A; }
+  h1 { font-size: 1.4rem; }
+  .note { background: #FEF3CD; border: 1px solid #E0C36A; padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.9rem; }
+  input { width: 100%; padding: 0.7rem; margin: 0.75rem 0; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; }
+  button { background: #0E7C7B; color: #fff; border: none; padding: 0.9rem 1.5rem; border-radius: 8px; font-size: 1rem; cursor: pointer; }
+  button:disabled { opacity: 0.5; }
+  pre { background: #F5F0E8; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; }
+  .invoice { font-size: 1.1rem; font-weight: 700; color: #0E7C7B; word-break: break-all; }
+</style>
+</head>
+<body>
+  <h1>IntaSend test payment — KSh 100</h1>
+  <p class="note">⚠️ This is a <strong>real LIVE</strong> KSh 100 payment (≈3.5% fee). Throwaway test page — do not deploy publicly. Delete after testing.</p>
+
+  <input type="email" id="email" placeholder="your email" />
+  <button id="payBtn">Pay KSh 100 (test)</button>
+
+  <div id="result" style="margin-top:2rem;" hidden>
+    <p>Payment complete. Copy this <strong>invoice ID</strong> into your <code>confirm-payment</code> test:</p>
+    <p class="invoice" id="invoiceId">—</p>
+    <p style="font-size:0.85rem;color:#666;">Full response (for reference):</p>
+    <pre id="raw"></pre>
+  </div>
+
+  <script>
+    const intaSend = new window.IntaSend({
+      publicAPIKey: "ISPubKey_live_6f7e1e4e-058a-4b31-b4a0-526a38aa8e70",
+      live: true,
+    })
+    .on("COMPLETE", (results) => {
+      console.log("COMPLETE:", results);
+      // Try to surface the invoice id from wherever IntaSend puts it.
+      const inv = results?.invoice_id || results?.invoice?.invoice_id || results?.invoice?.id || "(check Transactions in dashboard)";
+      document.getElementById("invoiceId").textContent = inv;
+      document.getElementById("raw").textContent = JSON.stringify(results, null, 2);
+      document.getElementById("result").hidden = false;
+    })
+    .on("FAILED", (results) => {
+      console.log("FAILED:", results);
+      alert("Payment failed or cancelled.");
+    })
+    .on("IN-PROGRESS", () => console.log("in progress..."));
+
+    document.getElementById("payBtn").addEventListener("click", () => {
+      const email = document.getElementById("email").value.trim();
+      if (!email) { alert("Enter an email"); return; }
+      intaSend.run({
+        amount: 100,
+        currency: "KES",
+        email: email,
+        api_ref: "DAWA-TEST-" + Date.now(),
+      });
+    });
+  </script>
+</body>
+</html>
