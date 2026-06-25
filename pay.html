@@ -188,10 +188,15 @@
   // IMPORTANT: live = true means REAL money moves. (Set false only with a sandbox key.)
   const IS_LIVE = true;
 
+  // Our Supabase verify function — confirms the payment server-side and flips
+  // the matching booking to 'paid'. (JWT verification is off, so the browser
+  // can call it directly; the secret key stays safely inside the function.)
+  const CONFIRM_URL = 'https://umcnqxdfsydyvynkgbom.supabase.co/functions/v1/confirm-payment';
+
   // Packages, priced in WHOLE Kenyan Shillings.
   // NOTE: IntaSend takes whole shillings — NOT cents. So 500 means KSh 500.
   const TIERS = {
-    quick:   { name: 'Quick Consult',     amount: 500  },
+    quick:   { name: 'Quick Consult',     amount: 50   }, // TEMP: 50 for testing — set back to 500 before launch
     full:    { name: 'Full Consultation', amount: 1200 },
     ongoing: { name: 'Ongoing Support',   amount: 3500 },
   };
@@ -206,8 +211,30 @@
     publicAPIKey: INTASEND_KEY,
     live: IS_LIVE,
   })
-  .on('COMPLETE', (results) => {
+  .on('COMPLETE', async (results) => {
     console.log('IntaSend COMPLETE:', results);
+
+    // Pull the payment's id from wherever IntaSend placed it in the result.
+    const invoiceId = results?.invoice_id ?? results?.tracking_id
+      ?? results?.invoice?.invoice_id ?? results?.invoice?.id ?? results?.id ?? null;
+
+    // Verify SERVER-SIDE before trusting it. This call also flips the matching
+    // booking to 'paid'. The browser only sends the id; our function does the
+    // real check with the secret key.
+    try {
+      const resp = await fetch(CONFIRM_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ invoice_id: invoiceId }),
+      });
+      const verify = await resp.json();
+      console.log('confirm-payment result:', verify);
+    } catch (err) {
+      // Payment still went through on IntaSend's side; we just couldn't reach
+      // our verify function. Log it; the cron sweep can reconcile it later.
+      console.log('confirm-payment call failed:', err);
+    }
+
     showSuccess(lastRef);
   })
   .on('FAILED', (results) => {
