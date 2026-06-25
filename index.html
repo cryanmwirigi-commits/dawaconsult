@@ -443,8 +443,8 @@
       </select>
     </div>
     <div class="form-group">
-      <label class="form-label" for="message">Your Question / Details</label>
-      <textarea id="message" name="message" class="form-textarea" placeholder="Please describe your medications, condition, or question in as much detail as possible..." required></textarea>
+      <label class="form-label" for="message">Anything to note before your call? <span style="opacity:0.6;font-weight:400;">(optional)</span></label>
+      <textarea id="message" name="message" class="form-textarea" placeholder="Anything you'd like Dr. Ryan to know beforehand. Please don't include detailed medical information here — we'll cover that privately on your call."></textarea>
     </div>
     <div class="form-group">
       <label class="form-label" for="preferred-contact">Preferred Contact Method</label>
@@ -713,14 +713,25 @@
         headers: { 'Accept': 'application/json' }
       });
       if (res.ok) {
-        btn.textContent = '✓ Request Sent!';
-        form.reset();
-        showToast('✓ Request received! Dr. Ryan will review and send you payment details within 24hrs.', true);
+        btn.textContent = '✓ Sent! Taking you to booking...';
+        showToast('✓ Got it — now pick your appointment time.', true);
+
+        // Carry the package, email and name into the booking page.
+        const pkg = document.getElementById('package');
+        const tier = (pkg && pkg.selectedOptions[0]) ? (pkg.selectedOptions[0].dataset.tier || '') : '';
+        const email = document.getElementById('email').value.trim();
+        const fullName = (document.getElementById('first-name').value.trim()
+          + ' ' + document.getElementById('last-name').value.trim()).trim();
+
+        const next = new URLSearchParams();
+        if (tier)     next.set('tier', tier);
+        if (email)    next.set('email', email);
+        if (fullName) next.set('name', fullName);
+
+        // Off to the booking page (which then hands off to payment).
         setTimeout(() => {
-          btn.textContent = 'Submit Consultation Request';
-          btn.style.background = 'var(--navy)';
-          btn.disabled = false;
-        }, 4000);
+          window.location.href = 'book.html' + (next.toString() ? '?' + next.toString() : '');
+        }, 1200);
       } else { throw new Error('Failed'); }
     } catch {
       btn.textContent = 'Submit Consultation Request';
