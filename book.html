@@ -116,8 +116,11 @@
   <div class="book-already" id="book-already">
     <div class="tick">&#10003;</div>
     <h2 class="section-title" style="margin:0 auto 0.5rem;">You've already <em>booked</em></h2>
-    <p class="section-sub" style="margin:0 auto 1.5rem;">You don't need to pick another time — just continue to payment to confirm it.</p>
-    <a href="pay.html" class="btn-primary" id="book-already-pay">Continue to payment</a>
+    <p class="section-sub" style="margin:0 auto 1.5rem;">Continue to payment to confirm your slot — or pick a different time if that one no longer works.</p>
+    <div style="display:flex; flex-direction:column; gap:0.85rem; align-items:center;">
+      <a href="pay.html" class="btn-primary" id="book-already-pay">Continue to payment</a>
+      <button type="button" id="book-rebook" style="background:none; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:0.9rem; color:var(--navy,#0B1F3A); opacity:0.7; text-decoration:underline;">Choose a different time</button>
+    </div>
   </div>
 </main>
 
@@ -172,6 +175,13 @@
     if (sessionStorage.getItem('dawa_booked') === '1') {
       showAlreadyBooked();
     }
+  });
+
+  // ── "Choose a different time": clear the guard and reload with a fresh calendar ──
+  document.getElementById('book-rebook').addEventListener('click', function () {
+    sessionStorage.removeItem('dawa_booked');
+    sessionStorage.removeItem('dawa_pay_href');
+    window.location.reload();   // reloads with same params; guard is now clear, so the calendar shows
   });
 
   function isCalendlyEvent(e) {
