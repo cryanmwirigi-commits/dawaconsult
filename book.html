@@ -141,14 +141,20 @@
   if (email) payQS.set('email', email);
   const payHref = 'pay.html' + (payQS.toString() ? '?' + payQS.toString() : '');
 
-  // ── GUARD: already booked this session? Then don't show the calendar. ──
-  if (sessionStorage.getItem('dawa_booked') === '1') {
+  // Show the "already booked" panel instead of the calendar.
+  function showAlreadyBooked() {
     document.getElementById('book-intro').style.display = 'none';
     document.getElementById('book-loader').style.display = 'none';
     document.getElementById('calendly-embed').style.display = 'none';
+    document.getElementById('book-confirm').classList.remove('show');
     const pay = sessionStorage.getItem('dawa_pay_href') || payHref;
     document.getElementById('book-already-pay').setAttribute('href', pay);
     document.getElementById('book-already').classList.add('show');
+  }
+
+  // ── GUARD (initial load): already booked this session? Skip the calendar. ──
+  if (sessionStorage.getItem('dawa_booked') === '1') {
+    showAlreadyBooked();
   } else {
     // Normal path: load the Calendly scheduler.
     Calendly.initInlineWidget({
@@ -157,6 +163,16 @@
       prefill: { name: name, email: email },
     });
   }
+
+  // ── GUARD (back button): the browser can restore this page from its
+  //    back-forward cache WITHOUT re-running the code above. The 'pageshow'
+  //    event fires even then — so we re-check here. THIS is what stops
+  //    "book → pay → back → book again". ──
+  window.addEventListener('pageshow', function () {
+    if (sessionStorage.getItem('dawa_booked') === '1') {
+      showAlreadyBooked();
+    }
+  });
 
   function isCalendlyEvent(e) {
     return e.data && e.origin === 'https://calendly.com'
