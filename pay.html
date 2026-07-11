@@ -176,7 +176,7 @@
         <span class="mpesa-tag">M-PESA</span>
         <span class="mpesa-say">Pay securely with M-Pesa — you'll get a prompt on your phone.</span>
       </div>
-      <button id="pay-btn" class="btn-primary pay-submit intaSendPayButton" data-currency="KES" data-method="M-PESA" disabled>Select a package to continue</button>
+      <button id="pay-btn" class="btn-primary pay-submit" disabled>Select a package to continue</button>
       <div class="pay-error" id="pay-error"></div>
       <p class="pay-secure">&#128274; Secure payment via IntaSend &middot; M-PESA</p>
     </div>
@@ -302,27 +302,11 @@
     }
   }
 
-  // ── 3. Keep the pay button in sync, and enable it only when ready ──
-  //    The button has class "intaSendPayButton" + data-method="M-PESA", so
-  //    IntaSend opens an M-PESA-ONLY checkout when it's clicked. We keep it
-  //    DISABLED until a package is chosen AND a valid email is entered — a
-  //    disabled button can't trigger checkout, so that's our validation gate.
+  // ── 3. Update the pay button once a package is chosen ──
   function refreshButton() {
-    const email = document.getElementById('pay-email').value.trim();
-
-    if (selectedTier) {
-      if (!lastRef) lastRef = `DAWA-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
-      payBtn.dataset.amount = String(TIERS[selectedTier].amount);  // whole shillings
-      payBtn.dataset.api_ref = lastRef;
-    }
-    payBtn.dataset.email = email;
-
-    const ready = selectedTier && validEmail(email);
-    payBtn.disabled = !ready;
-
-    if (!selectedTier)            payBtn.textContent = 'Select a package to continue';
-    else if (!validEmail(email))  payBtn.textContent = 'Enter your email to pay';
-    else                          payBtn.textContent = `Pay KSh ${TIERS[selectedTier].amount.toLocaleString()}`;
+    if (!selectedTier) return;
+    payBtn.disabled = false;
+    payBtn.textContent = `Pay KSh ${TIERS[selectedTier].amount.toLocaleString()}`;
   }
 
   // ── 4. Simple email check ──
@@ -330,8 +314,29 @@
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
   }
 
-  // Re-check whenever they type in the email field.
-  document.getElementById('pay-email').addEventListener('input', refreshButton);
+  // ── 5. Launch IntaSend checkout on "Pay" ──
+  //    This is the PROVEN method: intaSend.run(...) fires the checkout directly.
+  //    Card is hidden by the account-level setting in the IntaSend dashboard,
+  //    so we don't need a 'method' parameter here.
+  payBtn.addEventListener('click', () => {
+    const email = document.getElementById('pay-email').value.trim();
+
+    if (!selectedTier) { errorEl.textContent = 'Please choose a package first.'; return; }
+    if (!validEmail(email)) { errorEl.textContent = 'Please enter a valid email address.'; return; }
+
+    errorEl.textContent = '';
+    const tier = TIERS[selectedTier];
+
+    // Our own unique reference — ties this payment to a booking.
+    lastRef = `DAWA-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+
+    intaSend.run({
+      amount: tier.amount,      // whole shillings (NOT cents)
+      currency: 'KES',
+      email: email,
+      api_ref: lastRef,
+    });
+  });
 
   // Run once now — covers the pre-filled email + locked package from the flow.
   refreshButton();
