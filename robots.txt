@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Transactional pages — no value in search results
+Disallow: /pay.html
+Disallow: /book.html
+Disallow: /paytest.html
+
+Sitemap: https://dawaconsult.co.ke/sitemap.xml
